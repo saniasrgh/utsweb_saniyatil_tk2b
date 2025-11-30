@@ -1,0 +1,560 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: "Poppins", system-ui, sans-serif;
+    background: #f3f4f6;
+}
+
+.dash-page {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.dash-layout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.dash-sidebar {
+    background: url("img/img7.jpg") center/cover no-repeat;
+    padding: 24px 18px;
+    color: #f1f3f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Biar tulisan tetap terbaca */
+    backdrop-filter: brightness(0.9) blur(1px);
+}
+
+/* Overlay gelap agar teks tidak hilang */
+.dash-sidebar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(32, 32, 32, 0.6);
+    z-index: 0;
+}
+
+/* Semua konten sidebar harus di atas overlay */
+.dash-sidebar * {
+    position: relative;
+    z-index: 1;
+}
+
+
+.dash-sidebar-header {
+    margin-bottom: 14px;
+}
+
+.dash-sidebar-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
+}
+
+.dash-sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 8px 0 10px;
+}
+
+.dash-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: 0.18s ease;
+}
+
+.dash-sidebar-link .icon {
+    width: 20px;
+    text-align: center;
+}
+
+.dash-sidebar-link:hover {
+    background: rgba(148, 163, 184, 0.25);
+    transform: translateX(2px);
+}
+
+/* Active menu */
+.dash-active {
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+    color: #022c22;
+}
+
+.dash-active .icon {
+    transform: translateY(-1px);
+}
+
+/* Footer logout */
+.dash-sidebar-footer {
+    border-top: 1px solid rgb(255, 255, 255);
+    padding-top: 8px;
+    margin-top: 8px;
+}
+
+.dash-logout {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.dash-logout:hover {
+    background: rgba(248, 113, 113, 0.15);
+}
+
+
+/* ===== MAIN AREA ===== */
+.dash-main {
+    background: #f3f4f6;
+    padding: 20px 25px 32px;
+    flex: 1;
+    overflow-y: auto;
+    background: transparent;
+    /* display: flex;
+    flex-direction: column; */
+    /* gap: 20px; */
+}
+
+/* ===== HERO HEADER ===== */
+.dash-hero {
+    background: linear-gradient(135deg, #bbf7d0, #a5f3fc);
+    padding: 24px 32px;
+    margin: -40px -40px 0px -32px;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.halaman-pendaki .dash-main {
+    background: transparent;
+}
+
+.halaman-pendaki .dash-hero {
+    margin-bottom: 0;
+}
+
+.dash-hero-main {
+    max-width: 70%;
+}
+
+.dash-hero-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #064e3b;
+    margin-bottom: 4px;
+}
+
+.dash-hero-sub {
+    font-size: 14px;
+    color: #0f172a;
+}
+
+/* Badge */
+.dash-hero-badge {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.4);
+    font-size: 12px;
+    color: #065f46;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+/* ===== STATS ===== */
+.dash-stats {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.dash-stat-card {
+    /* background: #ffffff; */
+    border-radius: 20px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+    border: 1px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+    transition: .18s ease;
+}
+
+.dash-stat-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 55%);
+}
+
+.dash-stat-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.dash-stat-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.dash-stat-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: #15803d;
+}
+
+.dash-stat-desc {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.dash-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.18);
+}
+
+/* layout utama */
+.dash-page {
+    min-height: 100vh;
+}
+
+.dash-layout {
+    display: flex;
+    height: 100vh;
+    /* penuh layar */
+}
+
+/* sidebar tetap kiri */
+.dash-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+/* area konten kanan: scroll di sini */
+.dash-main {
+    flex: 1;
+    overflow-y: auto;
+    /* konten yang discroll */
+    background: #f3f4f6;
+}
+
+
+/* ===== TABLE SECTION ===== */
+.dash-section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+}
+
+.dash-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.dash-section-sub {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+
+.dash-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    /* scroll horizontal */
+    overflow-y: hidden;
+}
+
+.dash-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 1100px;
+}
+
+.dash-table thead th {
+    padding: 10px 12px;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+}
+
+.dash-table tbody td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dash-badge {
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.dash-badge-aktif {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.dash-badge-selesai {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.dash-badge-lain {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* FORM DALAM DASHBOARD */
+.dash-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 24px;
+    margin-top: 12px;
+}
+
+.dash-form-group {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.dash-form-group label {
+    margin-bottom: 4px;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.dash-form-group input,
+.dash-form-group textarea {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    outline: none;
+}
+
+.dash-form-group input:focus,
+.dash-form-group textarea:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3);
+}
+
+/* elemen yang harus full width (1 kolom penuh) */
+.dash-form-full {
+    grid-column: 1 / -1;
+}
+
+/* tombol */
+.dash-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.btn-primary {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: #f9fafb;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.05);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 7px 16px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #6b7280;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-ghost:hover {
+    background: #f3f4f6;
+}
+
+/* TABLE CARD */
+.dash-table-card {
+    background: #ffffff;
+    padding: 26px 28px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    margin: 25px 0 80px 0;
+    /* top | right | bottom | left */
+    overflow: visible;
+}
+
+
+/* WRAPPING TABLE */
+.dash-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* TABEL */
+.dash-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.dash-table thead th {
+    padding: 12px 14px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: white;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 0;
+}
+
+.dash-table tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #111827;
+}
+
+.dash-table tbody tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.dash-table tbody tr:hover {
+    background: #ecfdf3;
+}
+
+.dash-table tbody td:last-child {
+    white-space: nowrap;
+}
+
+/* LINK Aksi */
+.dash-action {
+    color: #15803d;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.dash-action:hover {
+    text-decoration: underline;
+}
+
+/* Samakan tampilan select & datetime dengan input lain */
+.dash-form select,
+.dash-form input[type="datetime-local"],
+.dash-form input[type="number"],
+.dash-form input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 999px;
+    /* biar rounded kayak input lain */
+    border: 1px solid #d1d5db;
+    outline: none;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/* Fokus: garis hijau halus */
+.dash-form select:focus,
+.dash-form input[type="datetime-local"]:focus,
+.dash-form input[type="number"]:focus,
+.dash-form input[type="text"]:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
+}
+
+/* Kalau arrow select terlalu “jadul”, bisa dirapikan sedikit */
+.dash-form select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+}
+
+.dash-hero {
+    margin-bottom: 0 !important;
+}
+
+.talang-section {
+    margin-top: 0 !important;
+}
+
+.dash-main {
+    background: transparent !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+
+    .dash-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dash-sidebar {
+        order: -1;
+        min-height: auto;
+    }
+
+    .dash-main {
+        padding: 16px;
+    }
+
+    .dash-hero {
+        margin: -16px -16px 20px -16px;
+        padding: 20px 16px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dash-hero-main {
+        max-width: 100%;
+    }
+
+    .dash-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+}
+
+
+
+
+@media (max-width: 600px) {
+    .dash-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-form {
+        grid-template-columns: 1fr;
+    }
+}
